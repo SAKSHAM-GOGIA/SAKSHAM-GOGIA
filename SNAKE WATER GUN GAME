@@ -1,0 +1,53 @@
+#Snake Water Gun
+import random
+n=int(input("Enter the Number of games u want to play: "))
+l=["s","w","g"]
+chance=n
+y=0     #your score
+c=0     #computer score
+d=0     #draw
+print("Enter: \ns for snake\nw for water\ng for gun")
+comp=random.choice(l)
+for i in range(n):
+    print("Enter your Choice:")
+    choice=input().lower()
+    if choice==comp:
+        print("Match draw")
+        d+=1
+        print(f"No. of tries left {n-(i+1)}")
+    elif choice=="s" and comp=="w":
+        print("You Won !!!")
+        y+=1
+        print(f"No. of tries left {n - (i + 1)}")
+    elif choice=="w" and comp=="s":
+        print("You loss !!!")
+        c+=1
+        print(f"No. of tries left {n - (i + 1)}")
+    elif choice=="g" and comp=="w":
+        print("You loss !!!")
+        c+=1
+        print(f"No. of tries left {n - (i + 1)}")
+    elif choice=="w" and comp=="g":
+        print("You Win !!!")
+        y+=1
+        print(f"No. of tries left {n - (i + 1)}")
+    elif choice=="s" and comp=="g":
+        print("You loss !!!")
+        c+=1
+        print(f"No. of tries left {n - (i + 1)}")
+    elif choice=="g" and comp=="s":
+        print("You Win !!!")
+        y+=1
+        print(f"No. of tries left {n - (i + 1)}")
+    else:
+        print("Invalid Input")
+
+print(f"Your final score is {y}")
+print(f"Computer final score is {c}")
+print(f"Draw matches {d}")
+if y==c:
+    print("Game draw")
+elif y<c:
+    print("You lose ")
+else:
+    print("You Won")
